@@ -2,14 +2,48 @@ import 'dotenv/config';
 import cors from 'cors';
 import express from 'express';
 
+import models, { connectDb } from './models';
+import routes from './routes';
+
 const app = express();
+
+// * Application-Level Middleware * //
+
+// Third-Party Middleware
 
 app.use(cors());
 
-app.get('/hola', (req,res) => {
-  res.send('Hello World');
+// Built-In Middleware
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Custom Middleware
+app.use(async (req, res, next) => {
+  req.context = {
+    models
+  };
+  next();
 });
 
-app.listen(process.env.PORT, () =>
-  console.log(`Listening on port ${process.env.PORT}`),
-);
+// * Routes * //
+
+app.use('/events', routes.event);
+app.use('/pokemons', routes.pokemon);
+app.use('/teams', routes.team);
+app.use('/users', routes.user);
+
+//API Greet
+app.get('/', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Pokemon API'
+  })
+})
+
+// * Start * //
+connectDb().then(async () => {
+  app.listen(process.env.PORT, () =>
+    console.log(`Pokemon-API app listening on port ${process.env.PORT}!`),
+  );
+});
