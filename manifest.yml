@@ -1,0 +1,4 @@
+applications:
+- name: pokemonapi
+  random-route: true
+  memory: 256M
