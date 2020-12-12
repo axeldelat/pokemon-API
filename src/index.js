@@ -35,12 +35,13 @@ app.use('/teams', routes.team);
 app.use('/users', routes.user);
 
 //API Greet
-app.get('/', (req, res) => {
-  res.json({
+app.get('/', (request, response) => {
+  response.json({
     success: true,
     message: 'Pokemon API'
-  }),
+  })
 })
+
 
 //Pokemon Catch
 
