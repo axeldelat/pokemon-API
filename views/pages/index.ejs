@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+</head>
+<body class="container">
+
+<header>
+    <%- include('../partials/header'); %>
+</header>
+
+<main>
+    <div class="jumbotron">
+        <ul id="pokemon-list">
+
+        </ul>
+
+
+
+    </div>
+</main>
+
+<footer>
+    <%- include('../partials/footer'); %>
+</footer>
+
+<script>
+  function fetchPokemons(){
+  fetch('https://pokemonapi-humble-gecko-nx.mybluemix.net/pokemons')
+    .then(response => response.json())
+    .then(function(allpokemon){
+      console.log(allpokemon.data.Pokemons)
+      allpokemon.data.Pokemons.forEach(function(pokemon){
+        var node = document.createElement("LI");
+        var textnode = document.createTextNode(`${pokemon.name}`);
+        node.appendChild(textnode);
+        document.getElementById("pokemon-list").appendChild(node);
+      })
+    // .forEach(function(pokemon){
+    //   console.log(pokemon)
+    // })
+  })
+  }
+  const pokeData = fetchPokemons();
+  console.log(pokeData)
+
+</script>
+
+</body>
+</html>

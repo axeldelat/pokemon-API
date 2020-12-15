@@ -2,10 +2,16 @@ import 'dotenv/config';
 import cors from 'cors';
 import express from 'express';
 
+
 import models, { connectDb } from './models';
 import routes from './routes';
 
+
 const app = express();
+
+// set the view engine to ejs
+app.set('view engine', 'ejs');
+
 
 // * Application-Level Middleware * //
 
@@ -27,6 +33,8 @@ app.use(async (req, res, next) => {
   next();
 });
 
+
+
 // * Routes * //
 
 app.use('/events', routes.event);
@@ -36,10 +44,12 @@ app.use('/users', routes.user);
 
 //API Greet
 app.get('/', (request, response) => {
-  response.json({
-    success: true,
-    message: 'Pokemon API'
-  })
+  response.render('pages/index');
+
+  // response.json({
+  //   success: true,
+  //   message: 'Pokemon API'
+  // })
 })
 
 
