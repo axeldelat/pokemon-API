@@ -6,15 +6,13 @@ const router = Router();
 router.post('/', async (req, res) => {
   try {
     const {
-      name,
-      members,
-      pokemons,
+      user_id,
+      pokemons
     } = req.body
 
     const newTeam = await req.context.models.Team.create({
-      name,
-      members,
-      pokemons,
+      user_id,
+      pokemons
     })
 
     res.json({

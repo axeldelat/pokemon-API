@@ -2,15 +2,12 @@ import mongoose from 'mongoose';
 
 const eventSchema = new mongoose.Schema(
   {
-    name: {
-      type: String,
+    date: {
+      type: Date,
       unique: true,
     },
-    teams: {
+    team_id: {
       type: Array,
-    },
-    dateOfEvent: {
-      type: Date,
     }
   },
   { timestamps: true },

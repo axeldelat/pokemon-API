@@ -7,15 +7,13 @@ const router = Router();
 router.post('/', async (req, res) => {
   try {
     const {
-      name,
-      teams,
-      dateOfEvent
+      team_id,
+      date
     } = req.body
 
     const newEvent = await req.context.models.Event.create({
-      name,
-      teams,
-      dateOfEvent
+      team_id,
+      date
     })
 
     res.json({

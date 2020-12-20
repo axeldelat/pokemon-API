@@ -10,7 +10,8 @@ router.post('/', async (req, res) => {
       abilities,
       sprites,
       types,
-      stats
+      stats,
+      gid
     } = req.body
 
     const newPokemon = await req.context.models.Pokemon.create({
@@ -18,7 +19,8 @@ router.post('/', async (req, res) => {
       abilities,
       sprites,
       types,
-      stats
+      stats,
+      gid
     })
 
     res.json({

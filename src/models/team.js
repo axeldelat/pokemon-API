@@ -2,16 +2,12 @@ import mongoose from 'mongoose';
 
 const teamSchema = new mongoose.Schema(
   {
-    name: {
+    user_id: {
       type: String,
       unique: true,
     },
-    members: {
-      type: Object,
-      //¿Cómo debería manejarse esta relación? user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-    },
     pokemons: {
-      type: Object,
+      type: Array
     },
   },
   { timestamps: true },
