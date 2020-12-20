@@ -46,10 +46,10 @@ app.use('/users', routes.user);
 app.get('/', (request, response) => {
   response.render('pages/index');
 
-  // response.json({
-  //   success: true,
-  //   message: 'Pokemon API'
-  // })
+  response.json({
+    success: true,
+    message: 'Pokemon API'
+  })
 })
 
 
