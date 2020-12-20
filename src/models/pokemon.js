@@ -6,6 +6,9 @@ const pokemonSchema = new mongoose.Schema(
       type: String,
       unique: true,
     },
+    gid: {
+      type: String,
+    },
     abilities: {
       type: Array,
     },
